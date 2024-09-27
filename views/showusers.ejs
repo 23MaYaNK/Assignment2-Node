@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Userlist</title>
+</head>
+<style>
+    .heading h1{
+   margin-right: 2%;
+   text-align-last: right;
+   background-image: linear-gradient(45deg,#0c00f8, #d2a00a);
+   font-size: 40px;
+  font-weight: 400;
+  color: transparent;
+  background-clip: text;
+ -webkit-background-clip: text;
+} 
+* {
+       
+       font-family: 'Poppins', sans-serif;
+   }
+.navbar {
+       width: 85px;
+       height: 100vh;
+       background:#0E3B45;
+       padding: 20px;
+       position: fixed;
+       left: 0;
+       top: 0;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+   }
+   .navbar ul {
+       list-style: none;
+       width: 100%;
+   }
+
+   .navbar ul li {
+       width: 80%;
+       margin: 20px 0;
+   }
+   .navbar ul li a {
+       text-decoration: none;
+       color: white;
+       font-size: 15px;
+       padding: 5px 5px;
+       display: block;
+       transition: background 0.3s ease, box-shadow 0.3s ease;
+       text-align: center;
+       border-radius: 5px;
+       border: 2px solid white
+   }
+   .navbar ul li a:hover {
+       background: #00bfff;
+       color: wheat;
+       box-shadow: 0 0 5px #00bfff, 0 0 25px #00bfff, 0 0 50px #00bfff, 0 0 100px #00bfff;
+   }
+
+   body {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 20%;
+            margin-left: 12%;
+            width: 100%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .table {
+            width: 100%;
+            margin-left: 8%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            margin-right: 5%;
+        }
+        .table th, .table td {
+            border: 2px solid grey;
+            padding: 12px;
+            text-align: center;
+        }
+        .table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        .table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .table tr:hover {
+            background-color: #ddd;
+        }
+        a {
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+        a:hover {
+            opacity: 0.8;
+        }
+        .edit-btn {
+            color: black;
+            background-color: yellow;
+            padding: 8px 12px;
+        }
+        .delete-btn {
+            background-color: red;
+            color: white;
+            padding: 8px 12px;
+        }
+        .line_break{
+            margin-left: 8%;
+            width:100%;
+    height: 1px;
+    float: left;
+    color: black;
+    padding-top: 3px;
+    border: none;
+    border-bottom: 3px solid black;
+    
+}
+   
+
+</style>
+<body>
+    <div class="heading">
+        <h1>Users List</h1>
+    </div>
+    <hr class="line_break">
+    <nav>
+        <div class="navbar">
+            <ul>
+                <li><a href="/">Back</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Country</th>
+                        <th>Email ID</th>
+                        <th>Mobile No.</th>
+                        <th>Password</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                        <th>Action</th>
+                        <th>Action</th>
+                        
+                    </tr>
+                    </thead>
+                    <% user.forEach((user)=>{ %>
+                        <tr>
+                            <td>
+                                <%= user.firstName %>
+                            </td>
+                            <td>
+                                <%= user.lastName %>
+                            </td>
+                            <td>
+                                <%= user.country %>
+                            </td>
+                            <td>
+                                <%= user.emailId %>
+                            </td>
+                            <td>
+                                <%= user.mobileNo %>
+                            </td>
+                            <td>
+                                <%= user.password %>
+                            </td>
+                            <td>
+                                <%= user.created_at %>
+                            </td>
+                            <td>
+                                <%= user.updated_at %>
+                            </td>
+                            <td>
+                                 <a href="/user/edit/page/<%= user._id %>" style="color: black; background-color: yellow;" >Edit</a>
+                            </td>
+                            <td>
+                                 <a href="/delete/user/<%= user._id %>"  style=" background-color: red; color: white;">Delete</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+              
+            </table>
+        </div>
+    </div>
+
+
+    <%- include('./base/footer.ejs') %>
+    

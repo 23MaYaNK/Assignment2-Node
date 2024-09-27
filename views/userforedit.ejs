@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .body {
+            background-color: cadetblue;
+        }
+
+        .heading h1 {
+            
+            margin-right: 2%;
+            text-align-last: right;
+            background-image: linear-gradient(45deg, #0c00f8, #d2a00a);
+            font-size: 40px;
+            font-weight: 400;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .line_break {
+            width: 100%px;
+            height: 5px;
+            float: left;
+            color: black;
+            padding-top: 3px;
+            background-color: rgba(255, 255, 255, .5);
+            border: none;
+            border-bottom: 3px solid black;
+        }
+
+        * {
+
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .navbar {
+            width: 85px;
+            height: 100vh;
+            background: #0E3B45;
+            padding: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        .navbar ul {
+            list-style: none;
+            width: 100%;
+        }
+
+        .navbar ul li {
+            width: 80%;
+            margin: 20px 0;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            padding: 5px 5px;
+            display: block;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border-radius: 5px;
+            border: 2px solid white
+        }
+
+        .navbar ul li a:hover {
+            background: #00bfff;
+            color: wheat;
+            box-shadow: 0 0 5px #00bfff, 0 0 25px #00bfff, 0 0 50px #00bfff, 0 0 100px #00bfff;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .table {
+            margin: 50%;
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .login-container {
+            color: #00bfff;
+            margin-top: 8%;
+            margin-left: 33%;
+            width: 50%;
+            max-width: 350px;
+            padding: 40px;
+            background-color: white;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            border: 2px solid black;
+            margin-right: 60%;
+        }
+        .login-container h2 {
+            color: black;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    
+        .login-container .inputBox {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .login-container .inputBox input {
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #00bfff;
+            font-size: 18px;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #00bfff;;
+            transition: 0.3s;
+        }
+        .login-container .inputBox span {
+            position: absolute;
+            left: 0;
+            padding: 10px;
+            font-size: 18px;
+            color: black;
+            pointer-events: none;
+            transition: 0.5s;
+        } 
+        .login-container .inputBox input:focus ~ span,
+        .login-container .inputBox input:valid ~ span {
+            transform: translateY(-20px);
+            font-size: 14px;
+            color: white;
+        }
+        .login-container .inputBox i {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: white;
+            border-radius: 4px;
+            transition: 0.5s;
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+        .login-container .inputBox input:focus ~ i,
+        .login-container .inputBox input:valid ~ i {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        /* Button */
+        button {
+            background-color: black;
+            border: 2px solid #00bfff;
+            width: 100%;
+            padding: 10px 0;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+            box-shadow: none;
+            margin-top: 10%;
+        }
+        button:hover {
+            background: white;
+            color: black;
+            box-shadow: 0 0 5px #00bfff, 0 0 25px #00bfff, 0 0 50px #00bfff, 0 0 100px #00bfff;
+        }
+        .line_break{
+            margin-left: 85px;
+            width:100%;
+            margin-bottom: 5%;
+    height: 10px;
+    float: left;
+    color: black;
+    padding-top: 3px;
+    border-bottom: 3px solid black;
+    
+}
+    
+
+    </style>
+</head>
+
+<body>
+
+    <div class="heading">
+        <h1>Update User</h1>
+    </div>
+    <hr class="line_break">
+    <nav>
+        <div class="navbar">
+            <ul>
+
+
+                <li><a href="/">Back</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="centered">
+        <div class="login-container">
+            <h2>For Updation</h2>
+            <form action="/update/user/<%= user._id %>" method="post">
+                <div>
+                    <div>
+                        <span class="form-label">First Name</span>
+                        <input type="text" name="firstName" class="form-control" value="<%= user.firstName %>">
+                    </div>
+                </div>
+                    <div>
+                        <span class="form-label">Last Name</span>
+                        <input type="text" name="lastName" class="form-control" value="<%= user.lastName %>">
+                    </div>
+               
+                    <div>
+                        <span class="form-label">Country Name</span>
+                        <input type="text" name="country" class="form-control" value="<%= user.country %>">
+                    </div>
+                
+                    <div>
+                        <span class="form-label">Email Id</span>
+                        <input type="text" name="emailId" class="form-control" value="<%= user.emailId %>">
+                    </div>
+                
+                    <div>
+                        <span class="form-label">Mobile No.</span>
+                        <input type="text" name="mobileNo" class="form-control" value="<%= user.mobileNo %>">
+                    </div>
+                
+                    <div>
+                        <span class="form-label">Password</span>
+                        <input type="text" name="password" class="form-control" value="<%= user.password %>">
+                    </div>
+                    <div>
+                        <span class="form-label">Password</span>
+                        <input type="text" name="updatedAt" class="form-control" value="<%= user.Date %>">
+                    </div>
+                
+                    
+                
+                
+                <button type="submit">Update</button>
+                
+            </form>
+        </div>
+    </div>
+
+
+    <%- include('./base/footer.ejs') %>
